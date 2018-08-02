@@ -1,0 +1,16 @@
+{
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "ios": "cpp",
+        "iostream": "cpp",
+        "cstring": "cpp",
+        "xiosbase": "cpp",
+        "string": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp",
+        "iosfwd": "cpp",
+        "xlocale": "cpp"
+    },
+    "files.encoding": "cp950"
+}
