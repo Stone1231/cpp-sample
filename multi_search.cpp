@@ -13,10 +13,11 @@ char P[1000][100+1];
  
 bool occur[1000];   // 記錄各個P有沒有出現在T當中
 int equiv[1000];    // 記錄各個P有沒有重複出現
- 
+int const ASCII_COUNT = 128;
+
 struct TrieNode
 {
-    TrieNode* l[26], *suffix, *dictsuffix;
+    TrieNode* l[ASCII_COUNT], *suffix, *dictsuffix;
     int index;  // P的編號
  
     TrieNode()
@@ -39,7 +40,7 @@ void init()
 // 砍掉整棵trie
 void free(TrieNode* p = root)
 {
-    for (int i=0; i<26; ++i)
+    for (int i=0; i<ASCII_COUNT; ++i)
         if (p->l[i])
             free(p->l[i]);
     delete p;
@@ -51,10 +52,10 @@ void add(char* s, int index)
     TrieNode* p = root;
     for (; *s; ++s)
     {
-        if (!p->l[*s - 'A'])
-            p->l[*s - 'A'] = new TrieNode();
+        if (!p->l[*s])
+            p->l[*s] = new TrieNode();
             
-        p = p->l[*s - 'A'];
+        p = p->l[*s];
     }
  
     // 如果此字串之前有出現，就特別記錄起來。    
@@ -76,7 +77,7 @@ void build()
     while (qf < qb)
     {
         TrieNode* p = *qf++;
-        for (int i=0; i<26; ++i)
+        for (int i=0; i<ASCII_COUNT; ++i)
             if (p->l[i])
             {
                 // 添上 suffix link
@@ -109,11 +110,11 @@ void search(char* s)
     {
         // 不斷比對字元，直到比對成功。
         // 此部分總計時間複雜度為O(T)。
-        while (p && !p->l[*s - 'A']) 
+        while (p && !p->l[*s]) 
             p = p->suffix;
 
         if (p) 
-            p = p->l[*s - 'A'];
+            p = p->l[*s];
         else 
             p = root;
  
@@ -125,13 +126,16 @@ void search(char* s)
     }
 }
 
-int main()//void aho_corasick()
+int main()
 {
-    strcpy(T, "ZAABAACAAAABAAAC"); 
+    //strcpy(T, "ZAABAACAAAABAAAC"); 
+    strcpy(T, "abbdrqtqcde12345SAACDEAABHJ"); 
+
     strcpy(P[0], "AAB"); 
     strcpy(P[1], "AAC");
-    strcpy(P[2], "ZAABX");
-    N = 3;
+    strcpy(P[2], "abbd");
+    strcpy(P[3], "1345");
+    N = 4;
 
     init();     // 初始化
     for (int i=0; i<N; ++i) // 所有P建立trie
@@ -144,10 +148,10 @@ int main()//void aho_corasick()
         // 搜尋到P，或者之前出現過P。
         if (occur[i] ||
             equiv[i] != -1 && occur[equiv[i]]){
-            cout << "第" << i << "個字串有出現" << "\n";
+            cout << "第" << i+1 << "個字串有出現" << "\n";
         }
         else{
-            cout << "第" << i << "個字串沒出現" << "\n";
+            cout << "第" << i+1 << "個字串沒出現" << "\n";
         }
     system("pause"); 
 }
