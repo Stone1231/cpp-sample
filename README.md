@@ -1,4 +1,3 @@
 # cpp-sample
-¨ä¤¤search.cpp, multi_search.cpp
-¬O°Ñ¦Òºtºâªkµ§°O http://www.csie.ntnu.edu.tw/~u91029/index.html
-
+å…¶ä¸­search.cpp, multi_search.cpp
+æ˜¯åƒè€ƒæ¼”ç®—æ³•ç­†è¨˜ http://www.csie.ntnu.edu.tw/~u91029/index.html
