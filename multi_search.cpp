@@ -58,11 +58,14 @@ void add(char* s, int index)
         p = p->l[*s];
     }
  
-    // 如果此字串之前有出現，就特別記錄起來。    
-    if (p->index == -1)
+    
+    if (p->index == -1){
         p->index = index;
-    else
+    }
+    else{
+        //如果此字串之前有出現，就特別記錄起來。    
         equiv[index] = p->index;
+    }
 }
  
 // 添上suffix link和dictionary suffix link
@@ -72,7 +75,7 @@ void build()
 {
     TrieNode* q[100000], **qf, **qb;
     qf = qb = q;
-    *qb++ = root;
+    *qb++ = root;//下一個指標重新指到root
  
     while (qf < qb)
     {
@@ -81,11 +84,11 @@ void build()
             if (p->l[i])
             {
                 // 添上 suffix link
-                TrieNode* q = p->suffix;
-                while (q && !q->l[i]) 
-                    q = q->suffix;
-                if (q) 
-                    p->l[i]->suffix = q->l[i];
+                TrieNode* ps = p->suffix;
+                while (ps && !ps->l[i]) 
+                    ps = ps->suffix;
+                if (ps) 
+                    p->l[i]->suffix = ps->l[i];
                 else   
                     p->l[i]->suffix = root;
  
