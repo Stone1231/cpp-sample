@@ -50,6 +50,7 @@ void intSample(){
     cout << "while ppf int\n";
     while (*ppf && ppf <= ppb)
     {
+        printf(" %d %d %d ",ppf,*ppf,**ppf);
         cout << ppf << " " << *ppf << " " << **ppf << "\n";
         *ppf++;//ppf會變
     }
@@ -114,6 +115,7 @@ void charSample(){
     cout << "while ppf char\n";
     while (*ppf && ppf <= ppb)
     {
+        printf(" %d %d %d ", ppf, *ppf, **ppf);
         cout << ppf << " " << *ppf << " " << **ppf << "\n";
         *ppf++;
     }    
@@ -187,6 +189,7 @@ void stringSample(){
     cout << "while ppf string\n";
     while (*ppf && ppf <= ppb)
     {
+        printf(" %d %d %d ",ppf,*ppf,**ppf);
         cout << ppf << " " << *ppf << " " << **ppf << "\n";
         *ppf++;//ppf會變
     }
