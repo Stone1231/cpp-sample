@@ -5,7 +5,8 @@
 
 using namespace std;
 
-void intSample(){
+void intSample()
+{
     const int length = 10;
     int ints[length];
     int count = sizeof(ints) / sizeof(int);
@@ -25,7 +26,7 @@ void intSample(){
     }
     cout << "\n";
 
-    pf = ints;//同 &ints[0] 
+    pf = ints; //同 &ints[0]
     pb = &ints[length - 1];
     cout << "while pf-ints\n";
     while (pf && pf <= pb)
@@ -45,14 +46,14 @@ void intSample(){
     }
     cout << "\n";
 
-    ppf = int_points;//同 &int_points[0];
+    ppf = int_points; //同 &int_points[0];
     ppb = &int_points[length - 1];
     cout << "while ppf int\n";
     while (*ppf && ppf <= ppb)
     {
-        printf(" %d %d %d ",ppf,*ppf,**ppf);
+        printf(" %d %d %d ", ppf, *ppf, **ppf);
         cout << ppf << " " << *ppf << " " << **ppf << "\n";
-        *ppf++;//ppf會變
+        *ppf++; //ppf會變
     }
     cout << "\n";
 
@@ -62,7 +63,7 @@ void intSample(){
     for (int i = 0; i < (length / step); ++i)
     {
         cout << ppf << " " << *ppf << " " << **ppf << "\n";
-        *ppf += step;//ppf不會變
+        *ppf += step; //ppf不會變
     }
     cout << "\n";
 
@@ -73,11 +74,17 @@ void intSample(){
     cout << "siz of *int[" << length << "] " << sizeof(int_points) << "\n";
 }
 
-void charSample(){
-    char chars[] = "ABCDEFGHIJ";
-    int count = sizeof(chars) / sizeof(char);
+void charSample()
+{
+    //char chars[] = "AZXBCDEFGHIJ";
+    //int count = sizeof(chars) / sizeof(char);
+    string chars = "AZXBCDEFGHIJ";
+    int count = chars.size();
+
     char *char_points[count], *pf, *pb, **ppf, **ppb;
-    char *char_point = chars;
+    char *char_point = &chars[0]; //chars;
+    //const char* pb = chars.c_str() + chars.size();
+
     for (int i = 0; i < count; ++i)
     {
         char_points[i] = &chars[i];
@@ -90,7 +97,17 @@ void charSample(){
     }
     cout << "\n";
 
-    pf = chars;//同 &ints[0] 
+    pf = &chars[0];
+    cout << "while *pf\n";
+    while (*pf)
+    {
+        // cout << *pf << "\n";
+        // pf++;
+        // 同上
+        cout << *pf++ << "\n";
+    }
+
+    pf = &chars[0];
     pb = &chars[count - 1];
     cout << "while pf-chars\n";
     while (pf && pf <= pb)
@@ -100,7 +117,7 @@ void charSample(){
     }
     cout << "\n";
 
-    pf = char_points[0]; //char_points[0]不行??
+    pf = char_points[0];
     pb = char_points[count - 1];
     cout << "while pf-char_points\n";
     while (pf && pf <= pb)
@@ -110,7 +127,7 @@ void charSample(){
     }
     cout << "\n";
 
-    ppf = char_points;//同 &char_points[0];
+    ppf = char_points; //同 &char_points[0];
     ppb = &char_points[count - 1];
     cout << "while ppf char\n";
     while (*ppf && ppf <= ppb)
@@ -118,7 +135,7 @@ void charSample(){
         printf(" %d %d %d ", ppf, *ppf, **ppf);
         cout << ppf << " " << *ppf << " " << **ppf << "\n";
         *ppf++;
-    }    
+    }
     cout << "\n";
 
     ppf = char_points;
@@ -128,19 +145,18 @@ void charSample(){
     {
         cout << ppf << " " << *ppf << " " << **ppf << "\n";
         *ppf += step;
-    }    
+    }
     cout << "\n";
 
     cout << "siz of char " << sizeof(char) << "\n";
-    cout << "siz of char[] " << sizeof(chars) << "\n";    
-    cout << "count of char[] " << count << "\n";
+    cout << "siz of string " << sizeof(chars) << "\n";
+    cout << "char count of string " << count << "\n";
     cout << "siz of *char " << sizeof(char_point) << "\n";
     cout << "siz of *char[" << count << "] " << sizeof(char_points) << "\n";
-
-
 }
 
-void stringSample(){
+void stringSample()
+{
     const int length = 10;
     string strings[length];
     int count = sizeof(strings) / sizeof(string);
@@ -150,13 +166,14 @@ void stringSample(){
     //string strings[100];
     for (int i = 0; i < length; ++i)
     {
-        for (int j = 0; j <= i; ++j){
+        for (int j = 0; j <= i; ++j)
+        {
             strings[i] += to_string(i);
         }
         //strings[i] = to_string(i) + ".hello world";
         string_points[i] = &strings[i];
     }
-
+    
     cout << "strings[]\n";
     for (int i = 0; i < length; ++i)
     {
@@ -164,7 +181,7 @@ void stringSample(){
     }
     cout << "\n";
 
-    pf = strings;//同 &ints[0] 
+    pf = strings;
     pb = &strings[length - 1];
     cout << "while pf-strings\n";
     while (pf && pf <= pb)
@@ -172,7 +189,7 @@ void stringSample(){
         cout << pf << " " << *pf << "\n";
         pf++;
     }
-    cout << "\n";    
+    cout << "\n";
 
     pf = string_points[0];
     pb = string_points[length - 1];
@@ -182,16 +199,16 @@ void stringSample(){
         cout << pf << " " << *pf << "\n";
         pf++;
     }
-    cout << "\n";    
+    cout << "\n";
 
-    ppf = string_points;//同 &string_points[0];
+    ppf = string_points; //同 &string_points[0];
     ppb = &string_points[length - 1];
     cout << "while ppf string\n";
     while (*ppf && ppf <= ppb)
     {
-        printf(" %d %d %d ",ppf,*ppf,**ppf);
+        printf(" %d %d %d ", ppf, *ppf, **ppf);
         cout << ppf << " " << *ppf << " " << **ppf << "\n";
-        *ppf++;//ppf會變
+        *ppf++; //ppf會變
     }
     cout << "\n";
 
@@ -201,7 +218,7 @@ void stringSample(){
     for (int i = 0; i < (length / step); ++i)
     {
         cout << ppf << " " << *ppf << " " << **ppf << "\n";
-        *ppf += step;//ppf不會變
+        *ppf += step; //ppf不會變
     }
     cout << "\n";
 
@@ -209,15 +226,15 @@ void stringSample(){
     cout << "siz of strings[" << length << "] " << sizeof(strings) << "\n";
     cout << "count of string[" << length << "] " << count << "\n";
     cout << "siz of *string " << sizeof(string_point) << "\n";
-    cout << "siz of *string[" << length << "] " << sizeof(string_points) << "\n";    
+    cout << "siz of *string[" << length << "] " << sizeof(string_points) << "\n";
 }
 
 int main()
 {
     intSample();
-
+    cout << "\n";
     charSample();
-
+    cout << "\n";
     stringSample();
 
     system("pause");

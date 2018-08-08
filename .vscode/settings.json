@@ -12,7 +12,8 @@
         "iosfwd": "cpp",
         "xlocale": "cpp",
         "initializer_list": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "cstddef": "cpp"
     },
     "files.encoding": "cp950"
 }
